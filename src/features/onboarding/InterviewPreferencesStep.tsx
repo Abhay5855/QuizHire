@@ -5,7 +5,6 @@ import { TvMinimal, ScreenShare, Check } from 'lucide-react';
 
 const InterviewPreferencesStep = () => {
 	const [selectedOption, setSelectedOption] = useState<string | null>(null);
-	const [hoveredOption, setHoveredOption] = useState<string | null>(null);
 
 	const options = [
 		{
@@ -41,7 +40,7 @@ const InterviewPreferencesStep = () => {
 
 	const PreferenceCard = ({ option }: { option: (typeof options)[0] }) => {
 		const isSelected = selectedOption === option.id;
-		const isHovered = hoveredOption === option.id;
+		const isHovered = option.id;
 		const Icon = option.icon;
 
 		return (
