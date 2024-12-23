@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
+# Quizhire
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Quizhire** repository! 🎉 This open-source project serves as a foundation for building modern, scalable web applications. With React, TypeScript, Vite, PNPM, and ShadCN UI for styling, it provides a powerful, developer-friendly stack.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+- **⚛ React**: A declarative, component-based library for building user interfaces.
+- **📝 TypeScript**: Strongly typed JavaScript for building robust applications.
+- **⚡ Vite**: A fast development environment with lightning-fast HMR.
+- **📦 PNPM**: Efficient package management for mono-repos and beyond.
+- **💅 ShadCN**: A modern styling framework with utility-first principles.
+- **✨ Lucide React Icons**: Crisp, customizable, and delightful icon library.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Prerequisites
+Ensure you have the following installed:
+- **Node.js** (v16 or later)
+- **PNPM** (v8 or later)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Installation
+1. Clone the repository:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```bash
+   git clone git@github.com:Abhay5855/QuizHire.git
+    
+2. Navigate to Project 
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   cd quizhire
+
+3. Install dependencies using PNPM:
+   ```bash
+   pnpm install
+
+4. Start the server
+   ```bash
+   pnpm run dev
