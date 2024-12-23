@@ -16,6 +16,8 @@ import {
 const RoleSelection: React.FC<RoleSelection> = ({
 	handleRoleSelection,
 	selectedRole,
+	formData,
+	setFormData,
 }) => {
 	// Animation variants
 	const containerVariants = {
@@ -94,15 +96,25 @@ const RoleSelection: React.FC<RoleSelection> = ({
 						name="role"
 						className="w-full transition-all duration-200 focus:ring-2 focus:ring-primary"
 						aria-label="Your role"
+						value={formData.role}
+						onChange={(e) =>
+							setFormData((prev) => ({ ...prev, role: e.target.value }))
+						}
 					/>
 				</div>
 				<div className="space-y-3">
 					<Label htmlFor="usecase" className="text-sm font-medium">
 						How will you use Talenthub?
 					</Label>
-					<Select>
+					<Select
+						onValueChange={(e) => {
+							setFormData((prev) => ({ ...prev, usecase: e }));
+						}}
+						value={formData.usecase}
+					>
 						<SelectTrigger
 							id="usecase"
+							name="usecase"
 							className="w-full transition-all duration-200 focus:ring-2 focus:ring-primary"
 						>
 							<SelectValue placeholder="Select an option" />
@@ -122,9 +134,15 @@ const RoleSelection: React.FC<RoleSelection> = ({
 					<Label htmlFor="company_size" className="text-sm font-medium">
 						Company Size?
 					</Label>
-					<Select>
+					<Select
+						onValueChange={(e) => {
+							setFormData((prev) => ({ ...prev, company_size: e }));
+						}}
+						value={formData.company_size}
+					>
 						<SelectTrigger
 							id="company_size"
+							name="company_size"
 							className="w-full transition-all duration-200 focus:ring-2 focus:ring-primary"
 						>
 							<SelectValue placeholder="Select company size" />
@@ -143,9 +161,15 @@ const RoleSelection: React.FC<RoleSelection> = ({
 					<Label htmlFor="platform" className="text-sm font-medium">
 						How did you hear about us?
 					</Label>
-					<Select>
+					<Select
+						onValueChange={(e) => {
+							setFormData((prev) => ({ ...prev, platform: e }));
+						}}
+						value={formData.platform}
+					>
 						<SelectTrigger
 							id="platform"
+							name="platform"
 							className="w-full transition-all duration-200 focus:ring-2 focus:ring-primary"
 						>
 							<SelectValue placeholder="Select a platform" />

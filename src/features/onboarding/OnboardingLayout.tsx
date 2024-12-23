@@ -4,11 +4,13 @@ import { Card, CardFooter, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import InterviewPreferencesStep from './InterviewPreferencesStep';
+import { FormData } from '@/types/roleSelection';
 
 const OnboardingLayout = () => {
 	const [step, setStep] = useState<number>(1);
 	const [selectedRole, setSelectedRole] = useState<string>('');
-
+	const [formData, setFormData] = useState<FormData>({role: "", usecase: "", company_size: "",platform: ""})
+	const isButtonDisabled:boolean = !formData.role || !formData.usecase || !formData.company_size
 	const nextStep = () => {
 		if (step < 2) {
 			setStep(step + 1);
@@ -16,7 +18,7 @@ const OnboardingLayout = () => {
 
 		//Submit Onboarding form here
 	};
-
+	console.log(formData)
 	const previousStep = () => {
 		setStep(step - 1);
 	};
@@ -33,6 +35,8 @@ const OnboardingLayout = () => {
 						nextStep={nextStep}
 						handleRoleSelection={handleRoleSelection}
 						selectedRole={selectedRole}
+						formData={formData}
+						setFormData={setFormData}
 					/>
 				);
 			case 2:
@@ -55,7 +59,7 @@ const OnboardingLayout = () => {
 								<ArrowLeft /> Back
 							</Button>
 						)}
-						<Button variant="default" size="default" onClick={nextStep}>
+						<Button variant="default" disabled={isButtonDisabled} size="default" onClick={nextStep}>
 							{step === 2 ? 'Finish Up' : 'Continue'}
 							<ArrowRight />
 						</Button>
