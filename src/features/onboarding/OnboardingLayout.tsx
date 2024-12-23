@@ -10,7 +10,11 @@ const OnboardingLayout = () => {
 	const [selectedRole, setSelectedRole] = useState<string>('');
 
 	const nextStep = () => {
-		setStep(step + 1);
+		if (step < 2) {
+			setStep(step + 1);
+		}
+
+		//Submit Onboarding form here
 	};
 
 	const previousStep = () => {
