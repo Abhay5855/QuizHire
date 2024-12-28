@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Card, CardContent } from '@/components/ui/card';
 import { TvMinimal, ScreenShare, Check } from 'lucide-react';
+import { useFormContext } from 'react-hook-form';
+import { RoleFormData } from '@/types/roleSelection';
 
 const InterviewPreferencesStep = () => {
-	const [selectedOption, setSelectedOption] = useState<string | null>(null);
-
+	const { watch, setValue } = useFormContext<RoleFormData>();
+	const [selectedOption, setSelectedOption] = useState<string | null>(
+		watch('interview')
+	);
 	const options = [
 		{
 			id: 'video',
@@ -20,7 +24,11 @@ const InterviewPreferencesStep = () => {
 			description: 'Assign tasks to candidates',
 		},
 	];
-
+	const handleSelect = (id: string) => {
+		console.log(id);
+		setSelectedOption(id);
+		setValue('interview', id);
+	};
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		visible: {
@@ -39,25 +47,22 @@ const InterviewPreferencesStep = () => {
 	};
 
 	const PreferenceCard = ({ option }: { option: (typeof options)[0] }) => {
-		const isSelected = selectedOption === option.id;
+		const isSelected = watch('interview') === option.id;
 		const isHovered = option.id;
 		const Icon = option.icon;
 
 		return (
 			<motion.div variants={itemVariants} whileTap={{ scale: 0.98 }}>
 				<Card
-					className={`
-            relative cursor-pointer transition-all duration-300
-            hover:shadow-lg border-2
-            ${
-							isSelected
-								? 'border-primary shadow-primary/25'
-								: isHovered
-									? 'border-primary/50'
-									: 'border-transparent'
-						}
-          `}
-					onClick={() => setSelectedOption(option.id)}
+					className={`relative cursor-pointer transition-all duration-300 hover:shadow-lg border-2
+        		      ${
+										isSelected
+											? 'border-primary shadow-primary/25'
+											: isHovered
+												? 'border-primary/50'
+												: 'border-transparent'
+									} `}
+					onClick={() => handleSelect(option.id)}
 					role="button"
 					tabIndex={0}
 					onKeyDown={(e) => {
@@ -155,7 +160,7 @@ const InterviewPreferencesStep = () => {
 							className="mt-8 text-center"
 						>
 							<motion.p
-								className="text-sm text-primary font-medium"
+								className="text-md text-primary font-medium"
 								initial={{ scale: 0.9 }}
 								animate={{ scale: 1 }}
 								transition={{ type: 'spring', stiffness: 200 }}

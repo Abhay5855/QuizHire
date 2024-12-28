@@ -1,10 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
-
-export interface FormData{
-	role:string,
-	usecase: string,
-	company_size: string,
-	platform?: string
+export interface RoleFormData {
+	roleName: string;
+	usecase: string;
+	company_size: string;
+	platform?: string;
+	interview: string;
 }
 
 export interface RoleSelection {
@@ -12,11 +11,9 @@ export interface RoleSelection {
 	companySize?: string;
 	designation?: string;
 	experience?: string;
-	nextStep: () => void;
+	nextStep?: () => void;
 	handleRoleSelection: (role: string) => void;
 	selectedRole: string;
-	formData: FormData;
-	setFormData: Dispatch<SetStateAction<FormData>>;
 }
 
 export interface Role {
