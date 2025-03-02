@@ -23,13 +23,7 @@ const OnboardingLayout = () => {
 	const nextStep = () => {
 		if (step < 2) {
 			setStep(step + 1);
-			// console.log(
-			// 	formController.watch('role'),
-			// 	formController.watch('usecase'),
-			// 	formController.watch('company_size')
-			// );
 		}
-		//Submit Onboarding form here
 		console.log('Submit button clickee	', formController.getValues());
 	};
 	const previousStep = () => {
